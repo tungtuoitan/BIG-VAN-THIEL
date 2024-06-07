@@ -1,4 +1,4 @@
-import logo from "../../assets/logo.webp";
+import logo from "@SRC/assets/logo.webp";
 
 const LogoIcon: React.FC = () => {
   return (

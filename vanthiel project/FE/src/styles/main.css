@@ -1,12 +1,25 @@
-
 .red {
     border: 1px solid red !important;
 }
+
 .blue {
     border: 1px solid blue !important;
 }
 
 .icon-button:hover {
     background-color: rgba(255, 255, 255, 0.171);
+}
 
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+  }
+
+
+@media (max-width: 768px) {
+    .aspect-w-1 {
+        width: 100%;
+    }
 }
