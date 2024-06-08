@@ -1,7 +1,7 @@
 import React from "react";
-import VisaIcon from "./icons/VisaIcon";
-import MasterCardIcon from "./icons/MasterCardIcon";
-import PaypalIcon from "./icons/PaypalIcon";
+import VisaIcon from "../icons/VisaIcon";
+import MasterCardIcon from "../icons/MasterCardIcon";
+import PaypalIcon from "../icons/PaypalIcon";
 
 const Footer: React.FC = () => {
   return (

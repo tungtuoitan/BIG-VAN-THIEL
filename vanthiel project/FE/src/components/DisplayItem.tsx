@@ -1,19 +1,20 @@
 import React from "react";
-import PersonImg from "@PUBLIC/person1.jpeg";
+import ButtonLink from "@SRC/components/buttons/ButtonLink";
+import { Product } from "@SRC/store/slices/productsSlice";
 
-const DisplayItem: React.FC = () => {
+const DisplayItem: React.FC<Product> = (item) => {
   return (
     <div className="mb-4">
-      <img src={PersonImg} alt="person" />
-      <h3 className="text-base20 text-dark my-2">MEN SHOES COLLECTIONS</h3>
-      <p className="text-sm text-dark font-light mb-2">
+      <img src={item.img[0]} alt="person" />
+      <h3 className="text-base20 text-dark my-2">
+        {item.userType.toUpperCase()} SHOES COLLECTIONS
+      </h3>
+      <p className="text-sm text-dark font-light mb-4">
         Constructed from luxury nylons, leathers, and custom hardware, featuring
         sport details such as hidden breathing vents, waterproof + antimicrobial
         linings, and more.
       </p>
-      <button className="bg-gray-800 hover:bg-black px-[20px] py-[10px] text-white rounded">
-        SHOP KID
-      </button>
+      <ButtonLink title={`SHOP ${item.userType.toUpperCase()}`} />
     </div>
   );
 };

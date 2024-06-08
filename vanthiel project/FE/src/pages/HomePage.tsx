@@ -1,10 +1,13 @@
-import MainItem from "@SRC/components/MainItem";
 import DisplayItem from "@SRC/components/DisplayItem";
 import ImgSlice from "@SRC/assets/imgSlices/img1.webp";
+import { Product } from "@SRC/store/slices/productsSlice";
+import data from "@SRC/db/data";
+import Card from "@SRC/components/Card";
+import Layout from "@SRC/components/layout/Layout";
 
 function HomePage() {
   return (
-    <>
+    <Layout>
       <div
         className="relative flex items-center md:grid md:grid-cols-2 w-100 h-[490px] bg-cover bg-no-repeat bg-left-center"
         style={{
@@ -28,24 +31,24 @@ function HomePage() {
       <main className="flex justify-center">
         <div className="px-[22px] lg:w-[1360px] lg:px-24">
           <div className="grid gap-2 md:grid-cols-3 mt-4">
-            <DisplayItem />
-            <DisplayItem />
-            <DisplayItem />
+            {data.slice(0, 3).map((item: Product) => {
+              return <DisplayItem {...item} key={item.id} />;
+            })}
           </div>
           <div className="pt-3">
             <h3 className="text-center font-base text-dark mt-[30px] mb-4">
-              FEATURE PRODUCTS
+              HOT PRODUCTS
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <MainItem />
-              <MainItem />
-              <MainItem />
-              <MainItem />
+              <Card {...data[0]} />
+              <Card {...data[0]} />
+              <Card {...data[0]} />
+              <Card {...data[0]} />
             </div>
           </div>
         </div>
       </main>
-    </>
+    </Layout>
   );
 }
 

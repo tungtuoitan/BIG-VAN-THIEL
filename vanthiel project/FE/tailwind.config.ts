@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: "#2B6CB0",
+        primary: "#000000",
         secondary: "#ED64A6",
         accent: "#FDBA74",
         dark: "#1A202C",
@@ -21,6 +21,7 @@ export default {
           700: "#4A5568",
           800: "#2D3748",
           900: "#1A202C",
+          "hover": "rgba(255, 255, 255, 0.171)"
         },
       },
       fontFamily: {
@@ -53,6 +54,7 @@ export default {
         none: "none",
       },
       screens: {
+        ssm: '450px',
         sm: '640px',
         md: '768px',
         lg: '1024px',

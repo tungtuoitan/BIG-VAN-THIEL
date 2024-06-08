@@ -6,8 +6,20 @@
     border: 1px solid blue !important;
 }
 
-.icon-button:hover {
-    background-color: rgba(255, 255, 255, 0.171);
+.bg-blackc {
+    background-color: black !important;
+}
+
+.bg-gray-trans {
+    background-color: rgba(0, 0, 0, 0.514);
+}
+
+.min-h-screen {
+    min-height: 100vh !important;
+}
+
+.border-bottom-1 {
+    border-bottom: 1px solid rgba(128, 128, 128, 0.274);
 }
 
 select {
@@ -17,6 +29,9 @@ select {
     text-overflow: '';
   }
 
+.box-shadow1 {
+    box-shadow: 6px 12px 60px rgba(0, 0, 0, .2) ;
+}
 
 @media (max-width: 768px) {
     .aspect-w-1 {

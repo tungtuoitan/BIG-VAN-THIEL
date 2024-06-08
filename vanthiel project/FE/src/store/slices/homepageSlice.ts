@@ -7,7 +7,7 @@ const initialState = {}
 const homepageSlice = createSlice({
   name: "homepage",
   initialState,
-  reducer:{
+  reducers:{
     
   }
 })
