@@ -1,12 +1,11 @@
-import Card from "@SRC/components/Card";
+import Card from "@SRC/components/cards/Card";
 import ArrowUpIcon from "@SRC/components/icons/ArrowUpIcon";
 import UpdownIcon from "@SRC/components/icons/UpdownIcon";
 import { Box, Slider } from "@mui/material";
 import { RootState } from "@SRC/store/store";
 import { useDispatch, useSelector } from "react-redux";
 import { updatePriceRange } from "@SRC/store/slices/productsSlice";
-import PaginationContainer from "@SRC/components/PaginationContainer";
-import DirectoryTree from "@SRC/components/DirectoryTree";
+import PaginationContainer from "@SRC/components/others/PaginationContainer";
 import { useEffect } from "react";
 import { updateData } from "@SRC/store/slices/productsSlice";
 import dataDb from "@SRC/db/data";
@@ -44,12 +43,11 @@ function Products() {
 
   return (
     <Layout>
-      <main>
+      <main className="mt-24">
         <div className="flex justify-center">
           <div className="w-full lg:w-[1360px] px-[22px] lg:px-24">
             <div className="font-light text-sm mt-4 lg:px-0">
-              <DirectoryTree />
-              <h1 className="text-xl40 font-bold">ALL PRODUCTS</h1>
+              <h1 className="text-xl40 font-bold mb-8">ALL PRODUCTS</h1>
 
               <div className="grid md:grid-cols-4 ">
                 <div className="hidden md:block md:col-span-1 text-sm font-bold py-[12px] pe-[20px]">

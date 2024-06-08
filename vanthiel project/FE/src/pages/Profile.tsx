@@ -1,12 +1,11 @@
-import DirectoryTree from "@SRC/components/DirectoryTree";
-import InforLine from "@SRC/components/InforLine";
+import InforLine from "@SRC/components/others/InforLine";
 import Layout from "@SRC/components/layout/Layout";
 import ALink from "@SRC/components/buttons/ALink";
 import { resetProfile, updateInfor } from "@SRC/store/slices/profileSlice";
 import { RootState } from "@SRC/store/store";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "@SRC/components/buttons/Button";
-import Form from "@SRC/components/Form";
+import Form from "@SRC/components/forms/Form";
 import { useState } from "react";
 
 function Profile() {
@@ -46,11 +45,10 @@ function Profile() {
 
   return (
     <Layout>
-      <main>
+      <main className="mt-24">
         <div className="flex justify-center min-h-screen">
           <div className="w-full lg:w-[1360px] px-[22px] lg:px-24">
             <div className="font-light text-sm mt-4 p-4 lg:px-0">
-              <DirectoryTree />
               <h1 className="text-xl40 font-bold">My Account</h1>
               <h2 className="text-xl mb-4">Account Details</h2>
               <div className="mb-6">

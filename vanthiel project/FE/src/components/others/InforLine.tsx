@@ -8,7 +8,7 @@ interface Props {
 
 const InforLine: React.FC<Props> = ({ infor, property }) => {
   return (
-    <div className="flex flex justify-between gap-4 py-2 border-b-2 border-gray-300">
+    <div className="flex justify-between gap-4 py-2 border-b-2 border-gray-300">
       <span className="text-base text-bold">
         {upperCaseFirstChar(property)}:{" "}
       </span>{" "}

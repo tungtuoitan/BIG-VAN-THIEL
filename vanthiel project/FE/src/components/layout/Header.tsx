@@ -1,11 +1,10 @@
 import React from "react";
-import LogoIcon from "../icons/LogoIcon";
-import ProfileIcon from "../icons/ProfileIcon";
-import SearchIcon from "../icons/SearchIcon";
-import ALinkHeader from "../buttons/ALinkHeader";
-import ButtonIcon from "../buttons/ButtonIcon";
-import CartIcon from "../icons/CartIcon";
-import Menu from "@SRC/components/Menu"
+import LogoIcon from "@SRC/components/icons/LogoIcon";
+import ProfileIcon from "@SRC/components/icons/ProfileIcon";
+import ALinkHeader from "@SRC/components/buttons/ALinkHeader";
+import ButtonIcon from "@SRC/components/buttons/ButtonIcon";
+import CartIcon from "@SRC/components/icons/CartIcon";
+import Menu from "@SRC/components/others/Menu"
 
 const Header: React.FC = () => {
   return (
@@ -34,7 +33,6 @@ const Header: React.FC = () => {
             </div>
           </div>
           <div className="flex gap-6 items-center">
-            <ButtonIcon icon={<SearchIcon />} link="/" />
             <ButtonIcon icon={<CartIcon />} link="/cart" />
             <ButtonIcon icon={<ProfileIcon />} link="/profile" />
             <Menu/>

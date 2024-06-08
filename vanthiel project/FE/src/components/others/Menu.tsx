@@ -2,7 +2,7 @@ import * as React from "react";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import MenuIcon from "./icons/MenuIcon";
+import MenuIcon from "@SRC/components/icons/MenuIcon";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "@SRC/store/store";

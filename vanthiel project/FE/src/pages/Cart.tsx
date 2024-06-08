@@ -1,4 +1,3 @@
-import DirectoryTree from "@SRC/components/DirectoryTree";
 import Button from "@SRC/components/buttons/Button";
 import Layout from "@SRC/components/layout/Layout";
 import data from "@SRC/db/data";
@@ -21,10 +20,9 @@ function Cart() {
 
   return (
     <Layout>
-      <main>
+      <main className="mt-24">
         <div className="flex justify-center min-h-screen">
           <div className="w-full lg:w-[1360px] px-[22px] lg:px-24">
-            <DirectoryTree />
             <div className="md:grid md:grid-cols-4 md:gap-12  ">
               <div className="col-start-1 col-end-4">
                 <div className="grid grid-cols-8 font-light mt-8 pb-3 border-bottom-1">
@@ -49,7 +47,7 @@ function Cart() {
                       if (choice?.amount) total = item.price * choice?.amount;
                       totalPrice += total;
                       return (
-                        <div className="grid grid-cols-8 border-bottom-1 ">
+                        <div className="grid grid-cols-8 border-bottom-1 " key={index}>
                           <div
                             key={index}
                             className="col-span-5 flex gap-2 py-4"

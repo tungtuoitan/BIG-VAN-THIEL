@@ -1,8 +1,8 @@
-import DisplayItem from "@SRC/components/DisplayItem";
+import DisplayCard from "@SRC/components/cards/DisplayCard";
 import ImgSlice from "@SRC/assets/imgSlices/img1.webp";
 import { Product } from "@SRC/store/slices/productsSlice";
 import data from "@SRC/db/data";
-import Card from "@SRC/components/Card";
+import Card from "@SRC/components/cards/Card";
 import Layout from "@SRC/components/layout/Layout";
 
 function HomePage() {
@@ -32,18 +32,17 @@ function HomePage() {
         <div className="px-[22px] lg:w-[1360px] lg:px-24">
           <div className="grid gap-2 md:grid-cols-3 mt-4">
             {data.slice(0, 3).map((item: Product) => {
-              return <DisplayItem {...item} key={item.id} />;
+              return <DisplayCard {...item} key={item.id} />;
             })}
           </div>
           <div className="pt-3">
-            <h3 className="text-center font-base text-dark mt-[30px] mb-4">
-              HOT PRODUCTS
+            <h3 className="text-center text-base20 text-dark mt-12">
+              FEATURED PRODUCTS
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              <Card {...data[0]} />
-              <Card {...data[0]} />
-              <Card {...data[0]} />
-              <Card {...data[0]} />
+              {data.slice(0, 4).map((item: Product) => {
+                return <Card {...item} key={item.id} />;
+              })}
             </div>
           </div>
         </div>

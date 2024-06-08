@@ -20,11 +20,11 @@ export const ERROR_MESSAGES: ErrorMessages = {
 };
 
 type Patterns = {
-  [key: string]: RegExp | number;
+  [key: string]: RegExp;
 };
 
 export const PATTERNS: Patterns = {
   name: /^[A-Za-z\s]+$/i,
-  email: /^\S+@\S+$/i,
-  password:  6,
+  email: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
+  password:  /^.{6,}$/,
 };

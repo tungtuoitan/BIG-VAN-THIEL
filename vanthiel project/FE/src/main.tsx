@@ -1,19 +1,19 @@
 import ReactDOM from "react-dom/client";
-import HomePage from "./pages/HomePage.tsx";
+import HomePage from "@SRC/pages/HomePage.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
-import { store } from "./store/store.ts";
-import Products from "./pages/Products.tsx";
+import { store } from "@SRC/store/store.ts";
+import Products from "@SRC/pages/Products.tsx";
 import Login from "@SRC/pages/Login.tsx";
-import SignUp from "./pages/SignUp.tsx";
-import Detail from "./pages/Detail.tsx";
-import NotFound from "./pages/NotFound.tsx";
-import Profile from "./pages/Profile.tsx";
+import SignUp from "@SRC/pages/SignUp.tsx";
+import Detail from "@SRC/pages/Detail.tsx";
+import NotFound from "@SRC/pages/NotFound.tsx";
+import Profile from "@SRC/pages/Profile.tsx";
 import { ThemeProvider } from "@mui/material";
-import muiTheme from "./themes/muiTheme.ts";
+import muiTheme from "@SRC/themes/muiTheme.ts";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-import Cart from "./pages/Cart.tsx";
+import Cart from "@SRC/pages/Cart.tsx";
 
 const router = createBrowserRouter([
   { path: "/", element: <HomePage />, errorElement: <NotFound /> },

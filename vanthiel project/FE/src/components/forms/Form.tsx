@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { LoginForm } from "@SRC/pages/Login";
-import Field from "./fields/Field";
-import Button from "./buttons/Button";
+import Field from "@SRC/components/fields/Field";
+import Button from "@SRC/components/buttons/Button";
 import upperCaseFirstChar from "@SRC/utils/function/upperCaseFirstChar";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 
 interface FormProps {
   type: "login" | "sign-up" | "update";
@@ -16,9 +17,12 @@ const Form: React.FC<FormProps> = ({ type }) => {
   } = useForm<LoginForm>();
 
   const onSubmit = (data: LoginForm) => {
-    console.log(data);
     // wait for API
   };
+  useEffect(() => {
+    axios
+
+  },[])
 
   return (
     <form
@@ -29,7 +33,7 @@ const Form: React.FC<FormProps> = ({ type }) => {
         {upperCaseFirstChar(type)}
       </h1>
       <div className="flex flex-col gap-2 mb-4">
-        {type !== "login" ?? (
+        {type !== "login" && (
           <Field fieldType="name" register={register} errors={errors} />
         )}
         <Field fieldType="email" register={register} errors={errors} />

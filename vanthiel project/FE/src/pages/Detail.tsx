@@ -1,4 +1,3 @@
-import DirectoryTree from "@SRC/components/DirectoryTree";
 import Button from "@SRC/components/buttons/Button";
 import ToggleButtons from "@SRC/components/buttons/ToggleButtons";
 import NumField from "@SRC/components/fields/NumField";
@@ -30,10 +29,9 @@ function Detail() {
 
   return (
     <Layout>
-      <main>
+      <main className="mt-24">
         <div className="flex justify-center min-h-screen">
           <div className="w-full lg:w-[1360px] px-[22px] lg:px-24">
-            <DirectoryTree />
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div className="">
                 <img

@@ -16,6 +16,7 @@ export interface Product {
   sizes: string[];
   category: string;
   userType: string;
+  desc: string
 }
 
 interface Filter {
