@@ -50,7 +50,7 @@ const BasicMenu: React.FC = () => {
         )}
         {!isLogged && (
           <MenuItem onClick={() => handleClose()}>
-            <Link to="/sign-up">Sign up</Link>
+            <Link to="/register">Sign up</Link>
           </MenuItem>
         )}
         {isLogged && (

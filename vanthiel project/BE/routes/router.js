@@ -9,7 +9,10 @@ const authMdw = require('../middlewares/auth.mdw')
 module.exports = function(app) {
     app.post('/register', validate(registerSchema), AuthController.register)
     app.post('/login', validate(loginSchema), AuthController.login)
-    // app.post('/update', validate(registerSchema), AuthController.updateProfile)
+    app.post('/update', validate(registerSchema), AuthController.updateProfile)
     app.get('/api/profile', authMdw, AuthController.getProfile)
     app.get('/api/products', ProductController.getAll)
+    // app.get('/api/products/pagination', ProductController.getAll, page)
+    // app.get('/banner', __)
+    // app.get('/slides', __)
 }

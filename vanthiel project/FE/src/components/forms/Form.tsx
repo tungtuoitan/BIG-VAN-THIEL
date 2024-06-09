@@ -10,9 +10,10 @@ import { useDispatch } from "react-redux";
 import { toggleUpdatePopup } from "@SRC/store/slices/commonSlice";
 import { updateInfor, updateIsLogged } from "@SRC/store/slices/profileSlice";
 import { LoginForm } from "@SRC/utils/types/types";
+import { MY_URL } from "@SRC/assets/constant/constant";
 
 export interface FormProps {
-  type: "login" | "sign-up" | "update";
+  type: "login" | "register" | "update";
 }
 const Form: React.FC<FormProps> = ({ type }) => {
   const {
@@ -26,19 +27,18 @@ const Form: React.FC<FormProps> = ({ type }) => {
 
   const onSubmit = (data: LoginForm) => {
     const fetch = async () => {
-      const url = type === "login" ? "http://localhost:3000/login" : "http://localhost:3000/register";
-      const res = await axios.post(url, data);
+      const res = await axios.post(MY_URL + type, data);
       if (!res.data.success) toast.error(res.data.msg);
       if (res.data.success) {
-        dispatch(updateInfor(["name",res.data.data.name]))
-        dispatch(updateInfor(["email",res.data.data.email]))
+        dispatch(updateInfor(["name", res.data.data.name]));
+        dispatch(updateInfor(["email", res.data.data.email]));
         if (type === "update") {
           toast.success(res.data.msg);
           dispatch(toggleUpdatePopup(false));
           return;
         }
         navigate("/");
-        dispatch(updateIsLogged(true))
+        dispatch(updateIsLogged(true));
       }
     };
     fetch();

@@ -35,3 +35,5 @@ export type ALL_TYPES = {
   [key: string]: color[] | size[] | brand[];
 };
 export const ALL_TYPES: ALL_TYPES = { colors, sizes, brands };
+
+export const MY_URL:string = "http://localhost:3000/"

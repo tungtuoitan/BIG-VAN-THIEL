@@ -1,4 +1,3 @@
-
 export type color = "black" | "red" | "green" | "white" | "blue";
 export type size = "s" | "m" | "l" | "xl";
 export type category = "sneakers" | "flats" | "sandals" | "heels";
@@ -41,6 +40,7 @@ export type Patterns = {
 export interface LoginForm {
   email: string;
   password: string;
+  name?: string;
 }
 
 export interface Common {

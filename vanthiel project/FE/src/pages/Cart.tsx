@@ -3,6 +3,7 @@ import Layout from "@SRC/components/layout/Layout";
 import data from "@SRC/db/data";
 import { removeChoiceFromCart } from "@SRC/store/slices/productsSlice";
 import { RootState } from "@SRC/store/store";
+import toFix from "@SRC/utils/function/toFix";
 import upperCaseFirstChar from "@SRC/utils/function/upperCaseFirstChar";
 import { Choice, Product } from "@SRC/utils/types/types";
 import { useDispatch, useSelector } from "react-redux";
@@ -82,7 +83,7 @@ const Cart: React.FC = () => {
                           </div>
                           <div className="col-start-7 col-end-9 md:col-start-6 md:col-end-7 flex justify-end md:justify-start items-center">
                             <div className="font-light text-sm">
-                              <p>${item.price.toFixed(2)}</p>
+                              <p>${toFix(item.price)}</p>
                               <p className="md:hidden">Qty: {choice?.amount}</p>
                             </div>
                           </div>
@@ -104,14 +105,14 @@ const Cart: React.FC = () => {
                 </h4>
                 <div className="flex justify-between font-light text-sm mb-4">
                   <span>Sub total</span>
-                  <span>{totalPrice.toFixed(2)}</span>
+                  <span>{toFix(totalPrice)}</span>
                 </div>
                 <div className="flex justify-between font-light text-sm mb-8">
                   <div className="flex flex-col">
                     <span className="font-bold">Total</span>
                     <span>(Inclusive of tax 10%)</span>
                   </div>
-                  <span>{(totalPrice * 1.1).toFixed(2)}</span>
+                  <span>{toFix(totalPrice * 1.1)}</span>
                 </div>
                 <Button title="CHECK OUT" handleClick={handleCheckOut} />
               </div>

@@ -1,4 +1,3 @@
-import Card from "@SRC/components/cards/Card";
 import ArrowUpIcon from "@SRC/components/icons/ArrowUpIcon";
 import UpdownIcon from "@SRC/components/icons/UpdownIcon";
 import { Box, Pagination, PaginationItem, Slider } from "@mui/material";
@@ -8,7 +7,7 @@ import {
   updateFilter,
   updatePriceRange,
 } from "@SRC/store/slices/productsSlice";
-import { useEffect, useRef, useState } from "react";
+import { Suspense, lazy, useEffect, useRef, useState } from "react";
 import Layout from "@SRC/components/layout/Layout";
 import axios from "axios";
 import { productsPageRoute } from "@SRC/utils/apiRoutes/apiRoutes";
@@ -20,6 +19,7 @@ import CheckboxForm from "@SRC/components/forms/CheckboxForm";
 import { TimeoutId } from "node_modules/@reduxjs/toolkit/dist/query/core/buildMiddleware/types";
 import FilterIcon from "@SRC/components/icons/FilterIcon";
 import { FullFilter, Product } from "@SRC/utils/types/types";
+const Card = lazy(() => import("@SRC/components/cards/Card"));
 
 const Products: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -32,9 +32,7 @@ const Products: React.FC = () => {
   const changePrice = (_event: Event, newValue: number | number[]) => {
     dispatch(updatePriceRange(newValue as [number, number]));
 
-    if (dragTimeoutRef.current) {
-      clearTimeout(dragTimeoutRef.current);
-    }
+    if (dragTimeoutRef.current) clearTimeout(dragTimeoutRef.current);
     dragTimeoutRef.current = setTimeout(() => {
       fetchDisplayProducts({ page: 1, filter: { ...filter } });
     }, 300);
@@ -59,6 +57,7 @@ const Products: React.FC = () => {
   const clickFilterIcon = () => {
     setFilterPopup(!filterPopup);
   };
+
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     fetchDisplayProducts({ page: 1, filter: { ...filter } });
@@ -85,7 +84,7 @@ const Products: React.FC = () => {
                     filterPopup
                       ? "fixed z-10 top-0 left-0 w-full px-12 py-4"
                       : "hidden"
-                  } md:block md:col-span-1 text-sm font-bold py-[12px] pe-[20px] bg-white`}
+                  } md:block md:col-span-1 py-[12px] pe-[20px] text-sm font-bold bg-white`}
                 >
                   <p className="mb-8">FILTER</p>
                   <div className="w-full">
@@ -96,22 +95,28 @@ const Products: React.FC = () => {
                         value={filter.priceRange}
                         onChange={changePrice}
                         valueLabelDisplay="off"
-                        color="primary"
+                        color="secondary"
                         min={0}
                         max={1000}
                       />
                     </Box>
-                    <div className="flex justify-between">
+                    <div className="flex justify-between text-gray-800 font-normal">
                       <span>${toFix(filter.priceRange[0])}</span>
                       <span>${toFix(filter.priceRange[1])}</span>
                     </div>
                   </div>
-                  <div>
-                    <p className="border-bottom-1 pb-2 pt-8">BRANDS</p>
+                  <div className="check-group">
+                    <p className="border-bottom-1 font-normal text-gray-600 pb-2 pt-8">
+                      BRANDS
+                    </p>
                     <CheckboxForm type={"brands"} />
-                    <p className="border-bottom-1 pb-2 pt-8">SIZES</p>
+                    <p className="border-bottom-1 font-normal text-gray-600 pb-2 pt-8">
+                      SIZES
+                    </p>
                     <CheckboxForm type={"sizes"} />
-                    <p className="border-bottom-1 pb-2 pt-8">COLOR</p>
+                    <p className="border-bottom-1 font-normal text-gray-600 pb-2 pt-8">
+                      COLOR
+                    </p>
                     <CheckboxForm type={"colors"} />
                   </div>
                 </div>
@@ -140,7 +145,11 @@ const Products: React.FC = () => {
                   <div className="flex flex-col justify-center">
                     <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                       {products.map((item: Product) => {
-                        return <Card {...item} key={item.id} />;
+                        return (
+                          <Suspense key={item.id}>
+                            <Card {...item} />
+                          </Suspense>
+                        );
                       })}
                     </div>
                     <div className="flex w-full justify-center mt-6">

@@ -14,7 +14,7 @@ const ButtonIcon: React.FC<IconButtonProps> = ({
   return (
     <Link
       to={link}
-      className={`text-xs w-10 h-10 rounded-full flex justify-center items-center ${
+      className={`text-xs w-12 h-12 rounded-full flex justify-center items-center ${
         hover ? "hover:bg-gray-hover" : ""
       }`}
     >

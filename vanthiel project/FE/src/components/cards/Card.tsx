@@ -1,5 +1,5 @@
 import React from "react";
-import {  updateChoice } from "@SRC/store/slices/productsSlice";
+import { updateChoice } from "@SRC/store/slices/productsSlice";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { Product } from "@SRC/utils/types/types";
@@ -23,7 +23,7 @@ const Card: React.FC<Product> = (item) => {
         <img
           src={item.img[0]}
           alt={item.title}
-          className="object-contain w-full h-full absolute"
+          className="object-contain w-full h-full absolute border border-4"
         />
       </div>
 

@@ -13,7 +13,7 @@ const Header: React.FC = () => {
   return (
     <header className="flex justify-center bg-black">
       <div className="w-full lg:w-[1360px] px-[22px] lg:px-24 ">
-        <div className="w-full h-[72px] lg:h-[44px] p-4x lg:px-0  shadow-md flex justify-between text-white ">
+        <div className="w-full h-[72px] p-4x lg:px-0  shadow-md flex justify-between text-white ">
           <div className="flex gap-8 items-center">
             <ButtonIcon icon={<LogoIcon />} hover={false} link="/" />
             <div className="container mx-auto justify-between items-center hidden lg:flex">

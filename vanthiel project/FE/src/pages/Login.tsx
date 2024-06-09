@@ -13,7 +13,7 @@ const Login: React.FC = () => {
               <div className="w-full flex flex-col items-center">
                 <Form type="login" />
                 <div className=" w-full max-w-[500px] px-12 flex justify-between mt-4">
-                  <Link to="/sign-up" className="hover:underline">
+                  <Link to="/register" className="hover:underline">
                     Create an account
                   </Link>
                   <Link to="/" className="hover:underline">

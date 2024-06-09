@@ -31,13 +31,16 @@ const CheckboxForm: React.FC<CheckboxFormProps> = ({ type }) => {
         const filterType: string[] = filter[type];
         return (
           <FormControlLabel
-            control={<Checkbox />}
+            control={<Checkbox color="secondary" />}
             label={upperCaseFirstChar(item)}
             key={index}
             onChange={(event: SyntheticEvent<Element, Event>) =>
               handleChange(event, upperCaseFirstChar(item))
             }
             checked={filterType.includes(item)}
+            color="secondary"
+            style={{color: "gray", fontWeight: "light", fontSize: "10px"}}
+            className="text-sm"
           />
         );
       })}

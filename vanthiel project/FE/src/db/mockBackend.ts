@@ -3,13 +3,16 @@ import data from "./data";
 import {
   bannerRoute,
   productsAllRoute,
-  accountRoute,
   slideRoute,
   productsPageRoute,
+  loginRoute,
+  registerRoute,
+  updateRoute,
 } from "@SRC/utils/apiRoutes/apiRoutes";
 import getProductPerPage from "@SRC/utils/function/getProductPerPage";
 import hasCommonElement from "@SRC/utils/function/hasCommonElement";
 import { Product } from "@SRC/utils/types/types";
+import { useMemo } from "react";
 
 export const initMockServer = () => {
   const server = createServer({});
@@ -80,28 +83,21 @@ export const initMockServer = () => {
     };
   });
 
-  server.post(accountRoute("login"), () => {
+  server.post(loginRoute, () => {
     return {
       msg: "Login successfully",
       success: true,
     };
   });
 
-  server.post(accountRoute("sign-up"), () => {
+  server.post(registerRoute, () => {
     return {
       msg: "Sign up successfully",
       success: true,
     };
   });
 
-  server.post(accountRoute("update"), () => {
-    return {
-      msg: "Updated successfully",
-      success: true,
-    };
-  });
-
-  server.post(accountRoute("update"), () => {
+  server.post(updateRoute, () => {
     return {
       msg: "Updated successfully",
       success: true,

@@ -1,7 +1,5 @@
-import DisplayCard from "@SRC/components/cards/DisplayCard";
-import Card from "@SRC/components/cards/Card";
 import Layout from "@SRC/components/layout/Layout";
-import { useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import {
@@ -10,9 +8,11 @@ import {
   slideRoute,
 } from "@SRC/utils/apiRoutes/apiRoutes";
 import { Product, Slide } from "@SRC/utils/types/types";
+const DisplayCard = lazy(() => import("@SRC/components/cards/DisplayCard"));
+const Card = lazy(() => import("@SRC/components/cards/Card"));
 
 const HomePage: React.FC = () => {
-  const [banner, setBanner] = useState("");
+  const [banner, setBanner] = useState<string>("");
   const [products, setProducts] = useState<Product[]>([]);
   const [slides, setSlides] = useState<Slide[]>([]);
 
@@ -65,7 +65,11 @@ const HomePage: React.FC = () => {
         <div className="px-[22px] lg:w-[1360px] lg:px-24">
           <div className="grid gap-2 md:grid-cols-3 mt-4">
             {slides.map((item: Slide, index: number) => {
-              return <DisplayCard {...item} key={index} />;
+              return (
+                <Suspense fallback={<div>Loading...</div>} key={index}>
+                  <DisplayCard {...item} />
+                </Suspense>
+              );
             })}
           </div>
           <div className="pt-3">
@@ -76,7 +80,11 @@ const HomePage: React.FC = () => {
               {products
                 .filter((item: Product) => item.bestseller)
                 .map((item: Product) => {
-                  return <Card {...item} key={item.id} />;
+                  return (
+                    <Suspense fallback={<div>Loading...</div>} key={item.id}>
+                      <Card {...item} />
+                    </Suspense>
+                  );
                 })}
             </div>
           </div>

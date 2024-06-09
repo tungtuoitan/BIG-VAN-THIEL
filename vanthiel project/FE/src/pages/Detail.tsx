@@ -12,14 +12,14 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const Detail: React.FC = () => {
+  const [mainImg, setMainImg] = useState(0);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
   const item = data.find((item: Product) => item.id === parseInt(id as string));
-  const [mainImg, setMainImg] = useState(0);
+
   const addToCart = () => {
     dispatch(addChoiceToCard());
-    //API ở đây
     toast(
       <div className="flex flex-col justify-center gap-2 p-4">
         <p className="text-center font-bold">Successfully Add to your Cart</p>

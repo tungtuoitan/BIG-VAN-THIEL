@@ -18,7 +18,7 @@ const ALinkHeader: React.FC<TextAProps> = ({ link, title }) => {
   return (
     <Link
       to={link}
-      className={`text-xs hover:opacity-100 font-light ${
+      className={`text-base hover:opacity-100 font-light ${
         path.userType === title.toLocaleLowerCase() ? "text-bold" : "opacity-60"
       }`}
       onClick={handleClick}
