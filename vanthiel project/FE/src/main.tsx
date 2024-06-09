@@ -14,9 +14,9 @@ import muiTheme from "@SRC/themes/muiTheme.ts";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import Cart from "@SRC/pages/Cart.tsx";
-import { initMockServer } from "./db/mockBackend";
+// import { initMockServer } from "./db/mockBackend";
 
-initMockServer()
+// initMockServer()
 
 const router = createBrowserRouter([
   { path: "/", element: <HomePage />, errorElement: <NotFound /> },

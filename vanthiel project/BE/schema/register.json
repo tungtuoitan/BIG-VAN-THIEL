@@ -1,7 +1,7 @@
 {
     "required": [
       "email",
-      "fullname",
+      "name",
       "password"
     ],
     "additionalProperties": true,
@@ -11,7 +11,7 @@
         "format": "email",
         "minLength": 6
       },
-      "fullname": {
+      "name": {
         "type": "string",
         "minLength": 6
       },

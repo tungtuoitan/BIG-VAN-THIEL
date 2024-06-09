@@ -4,12 +4,11 @@ import Button from "@SRC/components/buttons/Button";
 import upperCaseFirstChar from "@SRC/utils/function/upperCaseFirstChar";
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { accountRoute } from "@SRC/utils/apiRoutes/apiRoutes";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { toggleUpdatePopup } from "@SRC/store/slices/commonSlice";
-import { updateIsLogged } from "@SRC/store/slices/profileSlice";
+import { updateInfor, updateIsLogged } from "@SRC/store/slices/profileSlice";
 import { LoginForm } from "@SRC/utils/types/types";
 
 export interface FormProps {
@@ -27,9 +26,12 @@ const Form: React.FC<FormProps> = ({ type }) => {
 
   const onSubmit = (data: LoginForm) => {
     const fetch = async () => {
-      const res = await axios.post(accountRoute(type), data);
+      const url = type === "login" ? "http://localhost:3000/login" : "http://localhost:3000/register";
+      const res = await axios.post(url, data);
       if (!res.data.success) toast.error(res.data.msg);
       if (res.data.success) {
+        dispatch(updateInfor(["name",res.data.data.name]))
+        dispatch(updateInfor(["email",res.data.data.email]))
         if (type === "update") {
           toast.success(res.data.msg);
           dispatch(toggleUpdatePopup(false));
