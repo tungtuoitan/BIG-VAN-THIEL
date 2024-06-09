@@ -1,0 +1,18 @@
+{
+    "required": [
+      "email",
+      "password"
+    ],
+    "additionalProperties": true,
+    "properties": {
+      "email": {
+        "type": "string",
+        "format": "email",
+        "minLength": 6
+      },
+      "password": {
+        "type": "string",
+        "format": "password"
+      }
+    }
+  }
