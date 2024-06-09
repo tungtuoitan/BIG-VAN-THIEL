@@ -3,11 +3,6 @@ import { Link } from "react-router-dom";
 import Layout from "@SRC/components/layout/Layout";
 import Form from "@SRC/components/forms/Form";
 
-export interface LoginForm {
-  email: string;
-  password: string;
-}
-
 const Login: React.FC = () => {
   return (
     <Layout>

@@ -1,5 +1,5 @@
-import { Infor } from "@SRC/store/slices/profileSlice";
 import upperCaseFirstChar from "@SRC/utils/function/upperCaseFirstChar";
+import { Infor } from "@SRC/utils/types/types";
 
 interface Props {
   infor: Infor;

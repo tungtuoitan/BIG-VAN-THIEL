@@ -1,16 +1,13 @@
 import Button from "@SRC/components/buttons/Button";
 import Layout from "@SRC/components/layout/Layout";
 import data from "@SRC/db/data";
-import {
-  Choice,
-  Product,
-  removeChoiceFromCart,
-} from "@SRC/store/slices/productsSlice";
+import { removeChoiceFromCart } from "@SRC/store/slices/productsSlice";
 import { RootState } from "@SRC/store/store";
 import upperCaseFirstChar from "@SRC/utils/function/upperCaseFirstChar";
+import { Choice, Product } from "@SRC/utils/types/types";
 import { useDispatch, useSelector } from "react-redux";
 
-function Cart() {
+const Cart: React.FC = () => {
   const cart = useSelector((state: RootState) => state.products.cart);
   const cartIds = cart.map((item: Choice) => item.id);
   const items = data.filter((item: Product) => cartIds.includes(item.id));
@@ -47,7 +44,10 @@ function Cart() {
                       if (choice?.amount) total = item.price * choice?.amount;
                       totalPrice += total;
                       return (
-                        <div className="grid grid-cols-8 border-bottom-1 " key={index}>
+                        <div
+                          className="grid grid-cols-8 border-bottom-1 "
+                          key={index}
+                        >
                           <div
                             key={index}
                             className="col-span-5 flex gap-2 py-4"
@@ -121,6 +121,6 @@ function Cart() {
       </main>
     </Layout>
   );
-}
+};
 
 export default Cart;

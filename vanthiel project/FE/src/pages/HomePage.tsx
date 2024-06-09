@@ -1,17 +1,50 @@
 import DisplayCard from "@SRC/components/cards/DisplayCard";
-import ImgSlice from "@SRC/assets/imgSlices/img1.webp";
-import { Product } from "@SRC/store/slices/productsSlice";
-import data from "@SRC/db/data";
 import Card from "@SRC/components/cards/Card";
 import Layout from "@SRC/components/layout/Layout";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { toast } from "react-toastify";
+import {
+  bannerRoute,
+  productsAllRoute,
+  slideRoute,
+} from "@SRC/utils/apiRoutes/apiRoutes";
+import { Product, Slide } from "@SRC/utils/types/types";
 
-function HomePage() {
+const HomePage: React.FC = () => {
+  const [banner, setBanner] = useState("");
+  const [products, setProducts] = useState<Product[]>([]);
+  const [slides, setSlides] = useState<Slide[]>([]);
+
+  useEffect(() => {
+    const fetchBanner = async () => {
+      const { data } = await axios.get(bannerRoute);
+      if (!data.success) toast.error(data.msg);
+      if (data.success) setBanner(data.img);
+    };
+    fetchBanner();
+
+    const fetchSlides = async () => {
+      const { data } = await axios.get(slideRoute);
+      if (!data.success) toast.error(data.msg);
+      if (data.success) setSlides(data.data);
+    };
+    fetchSlides();
+
+    const fetchProducts = async () => {
+      const { data } = await axios.get(productsAllRoute);
+      if (!data.success) toast.error(data.msg);
+      if (data.success) setProducts(data.data);
+    };
+    fetchProducts();
+  }, []);
+
   return (
     <Layout>
       <div
         className="relative flex items-center md:grid md:grid-cols-2 w-100 h-[490px] bg-cover bg-no-repeat bg-left-center"
         style={{
-          backgroundImage: `url(${ImgSlice})`,
+          backgroundImage: `url(${banner})`,
         }}
       >
         <div className="z-10 text-center md:text-left md:col-start-2 md:col-end-3 px-8 text-gray-800">
@@ -31,24 +64,26 @@ function HomePage() {
       <main className="flex justify-center">
         <div className="px-[22px] lg:w-[1360px] lg:px-24">
           <div className="grid gap-2 md:grid-cols-3 mt-4">
-            {data.slice(0, 3).map((item: Product) => {
-              return <DisplayCard {...item} key={item.id} />;
+            {slides.map((item: Slide, index: number) => {
+              return <DisplayCard {...item} key={index} />;
             })}
           </div>
           <div className="pt-3">
-            <h3 className="text-center text-base20 text-dark mt-12">
-              FEATURED PRODUCTS
+            <h3 className="text-center text-base20 text-dark mt-12 mb-8">
+              BEST SELLER PRODUCTS
             </h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {data.slice(0, 4).map((item: Product) => {
-                return <Card {...item} key={item.id} />;
-              })}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+              {products
+                .filter((item: Product) => item.bestseller)
+                .map((item: Product) => {
+                  return <Card {...item} key={item.id} />;
+                })}
             </div>
           </div>
         </div>
       </main>
     </Layout>
   );
-}
+};
 
 export default HomePage;

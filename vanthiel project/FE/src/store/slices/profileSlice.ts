@@ -1,20 +1,10 @@
+import { Infor, Profile } from "@SRC/utils/types/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-export interface Infor {
-  name?: string | null;
-  email: string | null;
-  password: string | null;
-}
-
-export interface Profile {
-  isLogged: boolean;
-  infor: Infor;
-}
-
-const initInfor: Infor = {
-  name: "Tung Le Hoang",
-  email: "hoanhtungle@gmail.com",
-  password: "123456",
+export const initInfor: Infor = {
+  name: null,
+  email: null,
+  password: null,
 };
 
 const initialState: Profile = {
@@ -27,11 +17,7 @@ const profileSlice = createSlice({
   initialState,
   reducers: {
     updateIsLogged: (state, action: PayloadAction<boolean>) => {
-      const newProfile: Profile = {
-        ...state,
-        isLogged: action.payload,
-      };
-      state = newProfile;
+      state.isLogged = action.payload;
     },
     updateInfor: (state, action: PayloadAction<[keyof Infor, string]>) => {
       const newInformation: Infor = {

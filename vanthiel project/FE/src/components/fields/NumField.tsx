@@ -2,7 +2,8 @@ import React, { ChangeEvent } from "react";
 import { TextField } from "@mui/material";
 import { useDispatch } from "react-redux";
 import upperCaseFirstChar from "@SRC/utils/function/upperCaseFirstChar";
-import { Choice, updateChoice } from "@SRC/store/slices/productsSlice";
+import {  updateChoice } from "@SRC/store/slices/productsSlice";
+import { Choice } from "@SRC/utils/types/types";
 
 interface FieldProps {
   fieldType: keyof Choice;

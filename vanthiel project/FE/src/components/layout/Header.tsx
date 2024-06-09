@@ -4,9 +4,12 @@ import ProfileIcon from "@SRC/components/icons/ProfileIcon";
 import ALinkHeader from "@SRC/components/buttons/ALinkHeader";
 import ButtonIcon from "@SRC/components/buttons/ButtonIcon";
 import CartIcon from "@SRC/components/icons/CartIcon";
-import Menu from "@SRC/components/others/Menu"
+import Menu from "@SRC/components/others/Menu";
+import { useSelector } from "react-redux";
+import { RootState } from "@SRC/store/store";
 
 const Header: React.FC = () => {
+  const isLogged = useSelector((state: RootState) => state.profile.isLogged);
   return (
     <header className="flex justify-center bg-black">
       <div className="w-full lg:w-[1360px] px-[22px] lg:px-24 ">
@@ -33,9 +36,15 @@ const Header: React.FC = () => {
             </div>
           </div>
           <div className="flex gap-6 items-center">
-            <ButtonIcon icon={<CartIcon />} link="/cart" />
-            <ButtonIcon icon={<ProfileIcon />} link="/profile" />
-            <Menu/>
+            <ButtonIcon
+              icon={<CartIcon />}
+              link={isLogged ? "/cart" : "/login"}
+            />
+            <ButtonIcon
+              icon={<ProfileIcon />}
+              link={isLogged ? "/profile" : "/login"}
+            />
+            <Menu />
           </div>
         </div>
       </div>

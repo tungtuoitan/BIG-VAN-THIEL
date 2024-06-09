@@ -1,10 +1,11 @@
 import React, { ChangeEvent } from "react";
 import { TextField } from "@mui/material";
 import { useDispatch } from "react-redux";
-import { Infor, updateInfor } from "@SRC/store/slices/profileSlice";
+import {  updateInfor } from "@SRC/store/slices/profileSlice";
 import { UseFormRegister } from "react-hook-form";
 import { ERROR_MESSAGES, PATTERNS } from "@SRC/assets/constant/constant";
 import upperCaseFirstChar from "@SRC/utils/function/upperCaseFirstChar";
+import { Infor } from "@SRC/utils/types/types";
 
 interface FieldProps {
   fieldType: keyof Infor;

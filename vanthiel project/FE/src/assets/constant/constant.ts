@@ -1,9 +1,11 @@
-interface ErrorMessages {
-  [key: string]: {
-    REQUIRED: string;
-    INVALID: string;
-  };
-}
+import {
+  ErrorMessages,
+  Patterns,
+  brand,
+  color,
+  size,
+} from "@SRC/utils/types/types";
+
 export const ERROR_MESSAGES: ErrorMessages = {
   name: {
     REQUIRED: "Please enter your name",
@@ -19,12 +21,17 @@ export const ERROR_MESSAGES: ErrorMessages = {
   },
 };
 
-type Patterns = {
-  [key: string]: RegExp;
-};
-
 export const PATTERNS: Patterns = {
   name: /^[A-Za-z\s]+$/i,
-  email: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
-  password:  /^.{6,}$/,
+  email: /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/g,
+  password: /^.{6,}$/,
 };
+
+export const colors: color[] = ["black", "red", "green", "white", "blue"];
+export const sizes: size[] = ["s", "m", "l", "xl"];
+export const brands: brand[] = ["adidas", "nike", "vans", "puma"];
+
+export type ALL_TYPES = {
+  [key: string]: color[] | size[] | brand[];
+};
+export const ALL_TYPES: ALL_TYPES = { colors, sizes, brands };

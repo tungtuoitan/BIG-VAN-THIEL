@@ -25,12 +25,17 @@
 select {
     -webkit-appearance: none;
     -moz-appearance: none;
+    appearance: none;
     text-indent: 1px;
     text-overflow: '';
-  }
+}
 
 .box-shadow1 {
-    box-shadow: 6px 12px 60px rgba(0, 0, 0, .2) ;
+    box-shadow: 6px 12px 60px rgba(0, 0, 0, .2) !important;
+}
+
+.box-shadow2 {
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2) !important;
 }
 
 @media (max-width: 768px) {

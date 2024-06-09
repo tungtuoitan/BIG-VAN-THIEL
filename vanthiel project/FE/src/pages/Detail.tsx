@@ -3,14 +3,15 @@ import ToggleButtons from "@SRC/components/buttons/ToggleButtons";
 import NumField from "@SRC/components/fields/NumField";
 import Layout from "@SRC/components/layout/Layout";
 import data from "@SRC/db/data";
-import { Product, addChoiceToCard } from "@SRC/store/slices/productsSlice";
+import { addChoiceToCard } from "@SRC/store/slices/productsSlice";
+import { Product } from "@SRC/utils/types/types";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
-function Detail() {
+const Detail: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { id } = useParams();
@@ -84,6 +85,6 @@ function Detail() {
       </main>
     </Layout>
   );
-}
+};
 
 export default Detail;

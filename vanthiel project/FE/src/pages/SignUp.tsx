@@ -1,12 +1,7 @@
 import React from "react";
 import Layout from "@SRC/components/layout/Layout";
-import { LoginForm } from "@SRC/pages/Login";
 import ALink from "@SRC/components/buttons/ALink";
 import Form from "@SRC/components/forms/Form";
-
-export interface SignupForm extends LoginForm {
-  name: string;
-}
 
 const SignUp: React.FC = () => {
   return (

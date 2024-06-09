@@ -1,68 +1,37 @@
+import { Choice, Filter, Product, ProductsState } from "@SRC/utils/types/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-type color = "black" | "red" | "green" | "white" | "blue";
-type size = "S" | "M" | "L" | "XL";
-// type category = "sneakers" | "flats" | "sandals" | "heels";
-// type userType = "men" | "woman" | "kid" | "all";
-// type brand = "adidas" | "nike" | "vans" | "puma";
 
-export interface Product {
-  id: number;
-  img: string[];
-  title: string;
-  price: number;
-  brand: string;
-  colors: string[];
-  sizes: string[];
-  category: string;
-  userType: string;
-  desc: string
-}
-
-interface Filter {
-  userType: string;
-}
-
-export interface Choice {
-  id: number | null;
-  amount: number;
-  size: size;
-  color: color;
-}
-
-interface ProductsState {
-  priceRange: [number, number];
-  data: Product[];
-  filter: Filter;
-  choice: Choice;
-  cart: Choice[];
-}
 
 const initialState: ProductsState = {
-  priceRange: [0, 100],
   data: [],
   filter: {
     userType: "all",
+    page: 1,
+    priceRange: [0, 1000],
+    colors: ["black", "red", "green", "white", "blue"],
+    sizes: ["s", "m", "l", "xl"],
+    brands: ["adidas", "nike", "vans", "puma"],
   },
   choice: {
     id: null,
     amount: 1,
-    size: "M",
+    size: "m",
     color: "black",
   },
   cart: [
-    {
-      id: 1,
-      amount: 1,
-      size: "M",
-      color: "black",
-    },
-    {
-      id: 2,
-      amount: 3,
-      size: "XL",
-      color: "red",
-    },
+    // {
+    //   id: 1,
+    //   amount: 1,
+    //   size: "m",
+    //   color: "black",
+    // },
+    // {
+    //   id: 2,
+    //   amount: 3,
+    //   size: "xl",
+    //   color: "red",
+    // },
   ],
 };
 
@@ -71,12 +40,22 @@ const productsSlice = createSlice({
   initialState,
   reducers: {
     updatePriceRange: (state, action: PayloadAction<[number, number]>) => {
-      state.priceRange = [...action.payload];
+      state.filter.priceRange = [...action.payload];
     },
     updateData: (state, action: PayloadAction<Product[]>) => {
       state.data = [...action.payload];
     },
     updateFilter: (state, action: PayloadAction<[string, string | number]>) => {
+      const newFilter: Filter = {
+        ...state.filter,
+        [action.payload[0]]: action.payload[1],
+      };
+      state.filter = newFilter;
+    },
+    updateFilter2: (
+      state,
+      action: PayloadAction<[string, string[] | number[]]>
+    ) => {
       const newFilter: Filter = {
         ...state.filter,
         [action.payload[0]]: action.payload[1],
@@ -107,6 +86,7 @@ export const {
   updatePriceRange,
   updateData,
   updateFilter,
+  updateFilter2,
   updateChoice,
   addChoiceToCard,
   removeChoiceFromCart,

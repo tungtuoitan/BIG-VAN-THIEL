@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 
-interface ButtonProps {
+interface AlinkProps {
   title: string;
   link: string;
   onClick?: () => void;
 }
 
-const ALink: React.FC<ButtonProps> = ({ title, link, onClick }) => {
+const ALink: React.FC<AlinkProps> = ({ title, link, onClick }) => {
   return (
     <Link to={link} className="hover:underline text-blue-400" onClick={onClick}>
       {title}

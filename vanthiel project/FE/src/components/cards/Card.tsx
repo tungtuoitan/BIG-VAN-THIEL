@@ -1,7 +1,8 @@
 import React from "react";
-import { Product, updateChoice } from "@SRC/store/slices/productsSlice";
+import {  updateChoice } from "@SRC/store/slices/productsSlice";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { Product } from "@SRC/utils/types/types";
 
 const Card: React.FC<Product> = (item) => {
   const dispatch = useDispatch();

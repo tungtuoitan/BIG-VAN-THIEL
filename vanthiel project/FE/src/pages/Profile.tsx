@@ -7,18 +7,21 @@ import { useDispatch, useSelector } from "react-redux";
 import Button from "@SRC/components/buttons/Button";
 import Form from "@SRC/components/forms/Form";
 import { useState } from "react";
+import { toggleUpdatePopup } from "@SRC/store/slices/commonSlice";
 
-function Profile() {
-  const [popupOn, setPopupOn] = useState(false);
+const Profile: React.FC = () => {
   const infor = useSelector((state: RootState) => state.profile.infor);
   const [inforBeforeChange, setInforBeforeChange] = useState(infor);
+  const isUpdatePopupOpen = useSelector(
+    (state: RootState) => state.common.isUpdatePopupOpen
+  );
   const dispatch = useDispatch();
   const logout = () => {
     dispatch(resetProfile());
-    // API
   };
+
   const handleCancel = () => {
-    setPopupOn(false);
+    dispatch(toggleUpdatePopup(false));
     dispatch(
       updateInfor([
         "name",
@@ -39,13 +42,13 @@ function Profile() {
     );
   };
   const clickUpdate = () => {
-    setPopupOn(true);
+    dispatch(toggleUpdatePopup(true));
     setInforBeforeChange(infor);
   };
 
   return (
     <Layout>
-      <main className="mt-24">
+      <main className="mt-24 ">
         <div className="flex justify-center min-h-screen">
           <div className="w-full lg:w-[1360px] px-[22px] lg:px-24">
             <div className="font-light text-sm mt-4 p-4 lg:px-0">
@@ -67,10 +70,10 @@ function Profile() {
         </div>
         <div
           className={`absolute top-0 w-full h-screen justify-center pt-32 bg-gray-trans ${
-            popupOn ? "flex" : "hidden"
+            isUpdatePopupOpen ? "flex" : "hidden"
           }`}
         >
-          <div className="w-full max-w-[500px]">
+          <div className="w-full max-w-[500px] z-10">
             <div className="w-full flex justify-end">
               <button
                 className="hover:underline text-white opacity-40 hover:opacity-100"
@@ -85,6 +88,6 @@ function Profile() {
       </main>
     </Layout>
   );
-}
+};
 
 export default Profile;

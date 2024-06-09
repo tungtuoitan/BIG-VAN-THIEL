@@ -1,12 +1,12 @@
 
-interface Button {
+interface ButtonProps {
   title: string;
   type?: "button" | "submit";
   handleClick?: () => void;
   fullWidth?: boolean;
 }
 
-const Button: React.FC<Button> = ({
+const Button: React.FC<ButtonProps> = ({
   type = "button",
   title,
   handleClick = () => {},
